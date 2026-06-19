@@ -1,15 +1,46 @@
-<% content_for :title, "Showing workout" %>
+<% content_for :title, "Workout" %>
 
-<div class="md:w-2/3 w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<section class="mx-auto max-w-4xl space-y-6">
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <%= link_to "← Back to workouts", workouts_path, class: "text-sm font-bold text-zinc-400 transition hover:text-amber-200" %>
 
-  <h1 class="font-bold text-4xl">Showing workout</h1>
+    <div class="flex items-center gap-2">
+      <%= link_to "Edit", edit_workout_path(@workout), class: "rounded-2xl border border-white/10 px-4 py-2 text-sm font-bold text-zinc-200 transition hover:bg-white/10 hover:text-white" %>
 
-  <%= render @workout %>
+      <%= button_to "Delete",
+        @workout,
+        method: :delete,
+        data: { turbo_confirm: "Delete this workout?" },
+        class: "rounded-2xl border border-red-400/20 px-4 py-2 text-sm font-bold text-red-200 transition hover:bg-red-400/10" %>
+    </div>
+  </div>
 
-  <%= link_to "Edit this workout", edit_workout_path(@workout), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to workouts", workouts_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= button_to "Destroy this workout", @workout, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
-</div>
+  <article class="overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/80 shadow-2xl shadow-black/30">
+    <div class="border-b border-white/10 bg-white/[0.03] px-6 py-6 sm:px-8">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-amber-200">
+          <%= @workout.workout_type.presence || "Workout" %>
+        </span>
+
+        <time class="text-sm font-medium text-zinc-400">
+          <%= @workout.date&.strftime("%A, %B %-d, %Y") || "No date" %>
+        </time>
+      </div>
+
+      <h1 class="mt-5 text-4xl font-black tracking-tight text-white">
+        <%= @workout.workout_type.presence || "Workout" %>
+      </h1>
+    </div>
+
+    <div class="px-6 py-6 sm:px-8">
+      <div class="mb-3 flex items-center justify-between">
+        <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Raw notes</h2>
+        <span class="text-xs font-medium text-zinc-600">Version 1 capture</span>
+      </div>
+
+      <div class="rounded-3xl border border-white/10 bg-black/30 p-5">
+        <pre class="whitespace-pre-wrap font-mono text-sm leading-7 text-zinc-200"><%= @workout.raw_notes.presence || "No notes recorded." %></pre>
+      </div>
+    </div>
+  </article>
+</section>

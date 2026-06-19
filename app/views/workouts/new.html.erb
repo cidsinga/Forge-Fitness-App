@@ -1,9 +1,17 @@
 <% content_for :title, "New workout" %>
 
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New workout</h1>
+<section class="mx-auto max-w-3xl">
+  <div class="mb-8">
+    <%= link_to "← Back to workouts", workouts_path, class: "text-sm font-bold text-zinc-400 transition hover:text-amber-200" %>
 
-  <%= render "form", workout: @workout %>
+    <p class="mt-8 text-sm font-semibold uppercase tracking-[0.28em] text-amber-300/80">New Evidence</p>
+    <h1 class="mt-3 text-4xl font-black tracking-tight text-white">Log a workout</h1>
+    <p class="mt-4 text-base leading-7 text-zinc-400">
+      Don’t over-format it. Capture what happened. The system can get smarter later.
+    </p>
+  </div>
 
-  <%= link_to "Back to workouts", workouts_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-</div>
+  <div class="rounded-3xl border border-white/10 bg-zinc-900/80 p-5 shadow-2xl shadow-black/30 sm:p-8">
+    <%= render "form", workout: @workout %>
+  </div>
+</section>

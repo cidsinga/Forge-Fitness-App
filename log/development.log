@@ -113,3 +113,50 @@ Processing by WorkoutsController#show as HTML
 Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.6ms)
 
 
+Started GET "/" for ::1 at 2026-06-19 15:46:24 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='ForgeFitnessApp'*/[0m
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:15
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:16
+  Rendered workouts/_workout.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered workouts/index.html.erb within layouts/application (Duration: 41.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 43.8ms | GC: 0.0ms)
+Completed 200 OK in 54ms (Views: 26.1ms | ActiveRecord: 19.3ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for ::1 at 2026-06-19 15:51:04 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='ForgeFitnessApp'*/[0m
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:15
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:16
+  Rendered workouts/_workout.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered workouts/index.html.erb within layouts/application (Duration: 39.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 41.6ms | GC: 0.0ms)
+Completed 200 OK in 51ms (Views: 21.2ms | ActiveRecord: 21.9ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for ::1 at 2026-06-19 15:53:19 -0700
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:27
+  [1m[36mWorkout Load (3.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" ORDER BY "workouts"."date" DESC, "workouts"."created_at" DESC /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:29
+  Rendered workouts/index.html.erb within layouts/application (Duration: 15.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 5.9ms | ActiveRecord: 12.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-19 15:53:19 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
