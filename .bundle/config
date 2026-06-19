@@ -1,0 +1,2 @@
+---
+BUNDLE_BUILD__PSYCH: "--with-libyaml-dir=/opt/homebrew/opt/libyaml"
