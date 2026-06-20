@@ -28,12 +28,26 @@
   <div>
     <div class="flex items-end justify-between gap-4">
       <%= form.label :raw_notes, "Raw workout notes", class: "block text-sm font-bold text-zinc-200" %>
-      <span class="text-xs font-medium text-zinc-500">Messy is fine.</span>
+      <span class="text-xs font-medium text-zinc-500">Use #MovementName to structure entries.</span>
     </div>
 
     <%= form.text_area :raw_notes,
-      rows: 14,
-      placeholder: "Back Squat\n5x3 @ 205\n\n205 is a good challenge.\nNail the technique at this weight.\nTraps into bar.",
+      rows: 16,
+      placeholder: "#BackSquat
+5x3 @ 205
+205 is a good challenge.
+Nail the technique at this weight.
+Cue: traps into bar.
+
+#RDL
+3x10 @ 175
+Felt good.
+Grip got tired on the last set.
+
+#Notes
+Energy was decent.
+Lower back felt fine.
+Keep depth honest.",
       class: "mt-2 block w-full rounded-3xl border border-white/10 bg-zinc-950/80 px-4 py-4 font-mono text-sm leading-6 text-zinc-100 shadow-inner shadow-black/30 outline-none transition placeholder:text-zinc-700 focus:border-amber-300/60 focus:ring-4 focus:ring-amber-300/10" %>
   </div>
 
