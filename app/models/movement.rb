@@ -1,5 +1,7 @@
 class Movement < ApplicationRecord
   before_validation :normalize_tag
+  has_many :exercise_entries, dependent: :restrict_with_error
+
 
   validates :name, presence: true
   validates :tag,

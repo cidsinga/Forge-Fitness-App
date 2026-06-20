@@ -1,0 +1,45 @@
+<%= form_with(model: [workout, exercise_entry], class: "space-y-6") do |form| %>
+  <% if exercise_entry.errors.any? %>
+    <div class="rounded-2xl border border-red-400/20 bg-red-400/10 p-4">
+      <h2 class="text-sm font-bold text-red-200">
+        <%= pluralize(exercise_entry.errors.count, "error") %> kept this exercise entry from being saved.
+      </h2>
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-red-100/90">
+        <% exercise_entry.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :movement_id, "Movement", class: "block text-sm font-bold text-zinc-200" %>
+    <%= form.collection_select :movement_id,
+          Movement.order(:name),
+          :id,
+          :name,
+          { prompt: "Choose a movement" },
+          class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
+  </div>
+  <div class="grid gap-5 sm:grid-cols-3">
+    <div>
+      <%= form.label :sets, class: "block text-sm font-bold text-zinc-200" %>
+      <%= form.number_field :sets, min: 1, class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
+    </div>
+    <div>
+      <%= form.label :reps, class: "block text-sm font-bold text-zinc-200" %>
+      <%= form.number_field :reps, min: 1, class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
+    </div>
+    <div>
+      <%= form.label :weight, "Weight", class: "block text-sm font-bold text-zinc-200" %>
+      <%= form.number_field :weight, step: "0.5", min: 0, class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
+    </div>
+  </div>
+  <div>
+    <%= form.label :notes, class: "block text-sm font-bold text-zinc-200" %>
+    <%= form.text_area :notes, rows: 4, class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
+  </div>
+  <div class="flex items-center justify-between gap-4">
+    <%= link_to "Cancel", workout_path(workout), class: "rounded-xl border border-white/10 px-4 py-2 text-sm font-bold text-zinc-300 transition hover:bg-white/5" %>
+    <%= form.submit class: "rounded-xl bg-amber-400 px-5 py-2.5 text-sm font-black text-zinc-950 shadow-sm transition hover:bg-amber-300" %>
+  </div>
+<% end %>

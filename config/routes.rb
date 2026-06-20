@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :movements
+
   root "workouts#index"
-  resources :workouts
+
+  resources :workouts do
+    resources :exercise_entries, except: [:index, :show]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
