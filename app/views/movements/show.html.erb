@@ -1,15 +1,60 @@
-<% content_for :title, "Showing movement" %>
+<% content_for :title, @movement.name %>
 
-<div class="md:w-2/3 w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<section class="mx-auto max-w-4xl space-y-6">
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <%= link_to "← Back to movements", movements_path, class: "text-sm font-bold text-zinc-400 transition hover:text-amber-200" %>
 
-  <h1 class="font-bold text-4xl">Showing movement</h1>
+    <div class="flex items-center gap-2">
+      <%= link_to "Edit",
+        edit_movement_path(@movement),
+        class: "rounded-2xl border border-white/10 px-4 py-2 text-sm font-bold text-zinc-200 transition hover:bg-white/10 hover:text-white" %>
 
-  <%= render @movement %>
+      <%= button_to "Delete",
+        @movement,
+        method: :delete,
+        data: { turbo_confirm: "Delete this movement?" },
+        class: "rounded-2xl border border-red-400/20 px-4 py-2 text-sm font-bold text-red-200 transition hover:bg-red-400/10" %>
+    </div>
+  </div>
 
-  <%= link_to "Edit this movement", edit_movement_path(@movement), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to movements", movements_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= button_to "Destroy this movement", @movement, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
-</div>
+  <article class="overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/80 shadow-2xl shadow-black/30">
+    <div class="border-b border-white/10 bg-white/[0.03] px-6 py-6 sm:px-8">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-amber-200">
+          Movement
+        </span>
+
+        <span class="text-sm font-medium text-zinc-400">
+          Training memory
+        </span>
+      </div>
+
+      <h1 class="mt-5 text-4xl font-black tracking-tight text-white">
+        <%= @movement.name %>
+      </h1>
+    </div>
+
+    <div class="space-y-6 px-6 py-6 sm:px-8">
+      <section class="rounded-3xl border border-amber-300/15 bg-amber-300/10 p-5">
+        <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-amber-200/80">Current cue</h2>
+        <div class="mt-3 whitespace-pre-wrap text-base leading-7 text-zinc-100">
+          <%= @movement.current_cue.presence || "No current cue recorded." %>
+        </div>
+      </section>
+
+      <section class="rounded-3xl border border-white/10 bg-black/30 p-5">
+        <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Progression rule</h2>
+        <div class="mt-3 whitespace-pre-wrap text-base leading-7 text-zinc-200">
+          <%= @movement.progression_rule.presence || "No progression rule recorded." %>
+        </div>
+      </section>
+
+      <section class="rounded-3xl border border-white/10 bg-black/30 p-5">
+        <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Notes</h2>
+        <div class="mt-3 whitespace-pre-wrap text-base leading-7 text-zinc-200">
+          <%= @movement.notes.presence || "No notes recorded." %>
+        </div>
+      </section>
+    </div>
+  </article>
+</section>

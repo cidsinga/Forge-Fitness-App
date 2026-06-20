@@ -645,3 +645,179 @@ Processing by MovementsController#index as HTML
 Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/movements" for ::1 at 2026-06-20 08:59:22 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 19.8ms | GC: 2.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 25.0ms | GC: 6.6ms)
+Completed 200 OK in 30ms (Views: 14.0ms | ActiveRecord: 13.2ms (2 queries, 0 cached) | GC: 7.1ms)
+
+
+Started GET "/movements" for ::1 at 2026-06-20 09:02:30 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.8ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 92.2ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 94.4ms | GC: 0.4ms)
+Completed 200 OK in 98ms (Views: 11.7ms | ActiveRecord: 83.6ms (2 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/movements" for ::1 at 2026-06-20 09:02:42 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.3ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-20 09:02:43 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/movements" for ::1 at 2026-06-20 09:03:15 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.2ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 3.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-20 09:03:15 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-06-20 09:03:20 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/movements" for ::1 at 2026-06-20 09:06:32 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.2ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 13.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 5.9ms | ActiveRecord: 9.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-06-20 09:06:32 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/favicon.ico" for ::1 at 2026-06-20 09:06:32 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/movements" for ::1 at 2026-06-20 09:08:23 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  Rendered movements/index.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method 'movement' for an instance of #<Class:0x00000001218fbae8>)
+Caused by: NameError (undefined local variable or method 'movement' for an instance of #<Class:0x00000001218fbae8>)
+
+Information for: ActionView::Template::Error (undefined local variable or method 'movement' for an instance of #<Class:0x00000001218fbae8>):
+    4:       <p class="text-xs font-bold uppercase tracking-[0.18em] text-zinc-500">Movement</p>
+    5:       <h2 class="mt-2 text-2xl font-black tracking-tight text-white">
+    6:         <%= movement.name %>
+    7:       </h2>
+    8:     </div>
+    9: 
+   10:     <%= link_to "View",
+  
+app/views/movements/index.html.erb:7
+
+Information for cause: NameError (undefined local variable or method 'movement' for an instance of #<Class:0x00000001218fbae8>):
+  
+app/views/movements/index.html.erb:7
+Started GET "/favicon.ico" for ::1 at 2026-06-20 09:08:24 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/movements" for ::1 at 2026-06-20 09:09:10 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 11.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 3.7ms | ActiveRecord: 9.4ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-20 09:09:10 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-06-20 09:09:28 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/movements" for ::1 at 2026-06-20 09:13:06 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.3ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 6.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | GC: 0.1ms)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-06-20 09:13:06 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
+Started GET "/favicon.ico" for ::1 at 2026-06-20 09:13:06 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/movements" for ::1 at 2026-06-20 09:13:55 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='ForgeFitnessApp'*/[0m
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.1ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 34.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 36.7ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 23.3ms | ActiveRecord: 14.7ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-06-20 09:13:55 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  

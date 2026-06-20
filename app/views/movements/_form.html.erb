@@ -1,9 +1,11 @@
-<%= form_with(model: movement, class: "contents") do |form| %>
+<%= form_with(model: movement, class: "space-y-6") do |form| %>
   <% if movement.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(movement.errors.count, "error") %> prohibited this movement from being saved:</h2>
+    <div class="rounded-2xl border border-red-400/20 bg-red-400/10 p-4">
+      <h2 class="text-sm font-bold text-red-200">
+        <%= pluralize(movement.errors.count, "error") %> kept this movement from being saved.
+      </h2>
 
-      <ul class="list-disc ml-6">
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-red-100/90">
         <% movement.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,27 +13,46 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movement.errors[:name].none?, "border-red-400 focus:outline-red-600": movement.errors[:name].any?}] %>
+  <div>
+    <%= form.label :name, class: "block text-sm font-bold text-zinc-200" %>
+    <%= form.text_field :name,
+      placeholder: "Back Squat",
+      class: "mt-3 w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-base text-zinc-100 outline-none transition placeholder:text-zinc-600 focus:border-amber-300/60 focus:ring-4 focus:ring-amber-300/10" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :current_cue %>
-    <%= form.textarea :current_cue, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movement.errors[:current_cue].none?, "border-red-400 focus:outline-red-600": movement.errors[:current_cue].any?}] %>
+  <div>
+    <%= form.label :current_cue, "Current cue", class: "block text-sm font-bold text-zinc-200" %>
+    <p class="mt-1 text-sm text-zinc-500">The cue you want to see before doing this movement.</p>
+    <%= form.text_area :current_cue,
+      rows: 3,
+      placeholder: "Traps into bar. Keep going lower than you think.",
+      class: "mt-3 w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-base leading-7 text-zinc-100 outline-none transition placeholder:text-zinc-600 focus:border-amber-300/60 focus:ring-4 focus:ring-amber-300/10" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :progression_rule %>
-    <%= form.textarea :progression_rule, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movement.errors[:progression_rule].none?, "border-red-400 focus:outline-red-600": movement.errors[:progression_rule].any?}] %>
+  <div>
+    <%= form.label :progression_rule, class: "block text-sm font-bold text-zinc-200" %>
+    <p class="mt-1 text-sm text-zinc-500">How you decide when to progress this movement.</p>
+    <%= form.text_area :progression_rule,
+      rows: 3,
+      placeholder: "Own 205 × 5×3 before moving up.",
+      class: "mt-3 w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-base leading-7 text-zinc-100 outline-none transition placeholder:text-zinc-600 focus:border-amber-300/60 focus:ring-4 focus:ring-amber-300/10" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :notes %>
-    <%= form.textarea :notes, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": movement.errors[:notes].none?, "border-red-400 focus:outline-red-600": movement.errors[:notes].any?}] %>
+  <div>
+    <%= form.label :notes, class: "block text-sm font-bold text-zinc-200" %>
+    <p class="mt-1 text-sm text-zinc-500">Durable coaching notes, context, warnings, or goals.</p>
+    <%= form.text_area :notes,
+      rows: 7,
+      placeholder: "Goal: high-quality path toward 315.\nPrioritize depth, upper-back tightness, and repeatable form over rushing weight increases.",
+      class: "mt-3 w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-base leading-7 text-zinc-100 outline-none transition placeholder:text-zinc-600 focus:border-amber-300/60 focus:ring-4 focus:ring-amber-300/10" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+    <%= form.submit movement.persisted? ? "Save Changes" : "Save Movement",
+      class: "inline-flex cursor-pointer justify-center rounded-2xl bg-amber-400 px-5 py-3 text-sm font-black text-zinc-950 shadow-lg shadow-amber-950/30 transition hover:-translate-y-0.5 hover:bg-amber-300" %>
+
+    <%= link_to "Cancel",
+      movements_path,
+      class: "inline-flex justify-center rounded-2xl border border-white/10 px-5 py-3 text-sm font-bold text-zinc-300 transition hover:bg-white/10 hover:text-white" %>
   </div>
 <% end %>

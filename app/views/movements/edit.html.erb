@@ -1,10 +1,17 @@
-<% content_for :title, "Editing movement" %>
+<% content_for :title, "Edit #{@movement.name}" %>
 
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing movement</h1>
+<section class="mx-auto max-w-3xl space-y-6">
+  <div>
+    <%= link_to "← Back to movement", @movement, class: "text-sm font-bold text-zinc-400 transition hover:text-amber-200" %>
 
-  <%= render "form", movement: @movement %>
+    <p class="mt-8 text-sm font-bold uppercase tracking-[0.22em] text-amber-200/80">Training Memory</p>
+    <h1 class="mt-3 text-4xl font-black tracking-tight text-white">Edit Movement</h1>
+    <p class="mt-4 max-w-2xl text-base leading-7 text-zinc-400">
+      Refine the cues, progression rule, and notes you want to carry forward into future workouts.
+    </p>
+  </div>
 
-  <%= link_to "Show this movement", @movement, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to movements", movements_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-</div>
+  <div class="rounded-3xl border border-white/10 bg-zinc-900/80 p-6 shadow-2xl shadow-black/30 sm:p-8">
+    <%= render "form", movement: @movement %>
+  </div>
+</section>
