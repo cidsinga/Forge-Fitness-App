@@ -188,3 +188,89 @@ end
 puts "Seeded #{Workout.count} workouts."
 puts "Seeded #{Movement.count} movements."
 puts "Done."
+
+# Exercise entry seed data
+
+upper_body = Workout.find_or_create_by!(
+  date: Date.new(2026, 6, 17),
+  workout_type: "Upper Body"
+) do |workout|
+  workout.raw_notes = "Bench 3x8 @ 145\nRows 3x8 @ 145\nLateral raises 2x12 @ 15"
+end
+
+lower_body = Workout.find_or_create_by!(
+  date: Date.new(2026, 6, 19),
+  workout_type: "Lower Body"
+) do |workout|
+  workout.raw_notes = "Back squat 5x3 @ 205\nRDL 3x10 @ 175"
+end
+
+bench_press = Movement.find_or_create_by!(name: "Bench Press") do |movement|
+  movement.tag = "Strength"
+end
+
+bent_over_row = Movement.find_or_create_by!(name: "Bent Over Row") do |movement|
+  movement.tag = "Strength"
+end
+
+lateral_raise = Movement.find_or_create_by!(name: "Lateral Raise") do |movement|
+  movement.tag = "Accessory"
+end
+
+back_squat = Movement.find_or_create_by!(name: "Back Squat") do |movement|
+  movement.tag = "Strength"
+end
+
+romanian_deadlift = Movement.find_or_create_by!(name: "Romanian Deadlift") do |movement|
+  movement.tag = "Strength"
+end
+
+ExerciseEntry.find_or_create_by!(
+  workout: upper_body,
+  movement: bench_press,
+  position: 1
+) do |entry|
+  entry.sets = 3
+  entry.reps = 8
+  entry.weight = 145
+end
+
+ExerciseEntry.find_or_create_by!(
+  workout: upper_body,
+  movement: bent_over_row,
+  position: 2
+) do |entry|
+  entry.sets = 3
+  entry.reps = 8
+  entry.weight = 145
+end
+
+ExerciseEntry.find_or_create_by!(
+  workout: upper_body,
+  movement: lateral_raise,
+  position: 3
+) do |entry|
+  entry.sets = 2
+  entry.reps = 12
+  entry.weight = 15
+end
+
+ExerciseEntry.find_or_create_by!(
+  workout: lower_body,
+  movement: back_squat,
+  position: 1
+) do |entry|
+  entry.sets = 5
+  entry.reps = 3
+  entry.weight = 205
+end
+
+ExerciseEntry.find_or_create_by!(
+  workout: lower_body,
+  movement: romanian_deadlift,
+  position: 2
+) do |entry|
+  entry.sets = 3
+  entry.reps = 10
+  entry.weight = 175
+end
