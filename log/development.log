@@ -204,3 +204,94 @@ Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-
   
 ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
   
+Started GET "/workouts/new" for ::1 at 2026-06-19 20:54:28 -0700
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/_form.html.erb (Duration: 7.7ms | GC: 0.0ms)
+  Rendered workouts/new.html.erb within layouts/application (Duration: 8.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | GC: 1.1ms)
+Completed 200 OK in 31ms (Views: 12.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 10.1ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-19 20:54:28 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/workouts/new" for ::1 at 2026-06-19 20:57:06 -0700
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/_form.html.erb (Duration: 1.4ms | GC: 0.0ms)
+  Rendered workouts/new.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-19 20:57:06 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/workouts" for ::1 at 2026-06-19 20:58:51 -0700
+Processing by WorkoutsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "workout" => {"date" => "2026-06-19", "workout_type" => "Lower", "raw_notes" => "#sumoDeadlift\r\n5rep max set 275lbs"}, "commit" => "Create Workout"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/controllers/workouts_controller.rb:32:in 'block in WorkoutsController#create'
+  [1m[36mWorkout Create (7.2ms)[0m  [1m[32mINSERT INTO "workouts" ("date", "workout_type", "raw_notes", "created_at", "updated_at") VALUES ('2026-06-19', 'Lower', '#sumoDeadlift
+5rep max set 275lbs', '2026-06-20 03:58:51.443220', '2026-06-20 03:58:51.443220') RETURNING "id" /*action='create',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/controllers/workouts_controller.rb:32:in 'block in WorkoutsController#create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*action='create',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/controllers/workouts_controller.rb:32:in 'block in WorkoutsController#create'
+Redirected to http://localhost:3000/workouts/2
+↳ app/controllers/workouts_controller.rb:33:in 'block (2 levels) in WorkoutsController#create'
+Completed 302 Found in 77ms (ActiveRecord: 37.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/workouts/2" for ::1 at 2026-06-19 20:58:51 -0700
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mWorkout Load (1.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = 2 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/controllers/workouts_controller.rb:68:in 'WorkoutsController#set_workout'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  Rendered workouts/show.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 2.9ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/workouts/2/edit" for ::1 at 2026-06-19 21:01:34 -0700
+Processing by WorkoutsController#edit as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mWorkout Load (2.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = 2 LIMIT 1 /*action='edit',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/controllers/workouts_controller.rb:68:in 'WorkoutsController#set_workout'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/edit.html.erb within layouts/application
+  Rendered workouts/_form.html.erb (Duration: 2.8ms | GC: 0.0ms)
+  Rendered workouts/edit.html.erb within layouts/application (Duration: 4.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 200 OK in 15ms (Views: 7.5ms | ActiveRecord: 2.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/workouts" for ::1 at 2026-06-19 21:05:09 -0700
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:27
+  [1m[36mWorkout Load (1.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" ORDER BY "workouts"."date" DESC, "workouts"."created_at" DESC /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:29
+  Rendered workouts/index.html.erb within layouts/application (Duration: 29.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | GC: 0.7ms)
+Completed 200 OK in 35ms (Views: 6.6ms | ActiveRecord: 25.9ms (2 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/workouts/new" for ::1 at 2026-06-19 21:05:13 -0700
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/_form.html.erb (Duration: 3.0ms | GC: 0.8ms)
+  Rendered workouts/new.html.erb within layouts/application (Duration: 4.2ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.8ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.8ms)
+
+

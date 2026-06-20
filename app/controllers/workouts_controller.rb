@@ -19,6 +19,11 @@ class WorkoutsController < ApplicationController
   def edit
   end
 
+  # Pre Fill Date picker
+  def new
+    @workout = Workout.new(date: Date.current)
+  end
+
   # POST /workouts or /workouts.json
   def create
     @workout = Workout.new(workout_params)
