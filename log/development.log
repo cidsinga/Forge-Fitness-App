@@ -200,3 +200,7 @@ Processing by WorkoutsController#new as HTML
 Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.8ms)
 
 
+Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-06-19 20:21:30 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
+  
