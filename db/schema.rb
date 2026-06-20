@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_20_154908) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_20_163045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,7 +20,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_20_154908) do
     t.string "name"
     t.text "notes"
     t.text "progression_rule"
+    t.string "tag"
     t.datetime "updated_at", null: false
+    t.index ["tag"], name: "index_movements_on_tag", unique: true
   end
 
   create_table "workouts", force: :cascade do |t|

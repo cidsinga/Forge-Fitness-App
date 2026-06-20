@@ -28,9 +28,16 @@
   <div class="flex items-start justify-between gap-4">
     <div class="min-w-0">
       <p class="text-xs font-bold uppercase tracking-[0.18em] text-zinc-500">Movement</p>
+
       <h2 class="mt-2 text-2xl font-black tracking-tight text-white">
         <%= movement.name %>
       </h2>
+
+      <% if movement.tag.present? %>
+        <p class="mt-1 font-mono text-sm font-bold text-amber-200/70">
+          #<%= movement.tag %>
+        </p>
+      <% end %>
     </div>
 
     <%= link_to "View",

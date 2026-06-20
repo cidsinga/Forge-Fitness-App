@@ -21,6 +21,19 @@
   </div>
 
   <div>
+  <%= form.label :tag, "Raw notes tag", class: "block text-sm font-bold text-zinc-200" %>
+  <p class="mt-1 text-sm text-zinc-500">Use this in workout notes to connect raw entries to this movement.</p>
+
+  <div class="mt-3 flex rounded-2xl border border-white/10 bg-black/40 focus-within:border-amber-300/60 focus-within:ring-4 focus-within:ring-amber-300/10">
+    <span class="flex items-center border-r border-white/10 px-4 text-zinc-500">#</span>
+
+    <%= form.text_field :tag,
+      placeholder: "UpperCamelCase eg: BenchPress",
+      class: "w-full rounded-r-2xl bg-transparent px-5 py-4 text-base text-zinc-100 outline-none placeholder:text-zinc-600" %>
+  </div>
+</div>
+
+  <div>
     <%= form.label :current_cue, "Current cue", class: "block text-sm font-bold text-zinc-200" %>
     <p class="mt-1 text-sm text-zinc-500">The cue you want to see before doing this movement.</p>
     <%= form.text_area :current_cue,

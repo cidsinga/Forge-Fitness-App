@@ -65,6 +65,6 @@ class MovementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movement_params
-      params.expect(movement: [ :name, :current_cue, :progression_rule, :notes ])
+      params.expect(movement: [ :name, :tag, :current_cue, :progression_rule, :notes ])
     end
 end

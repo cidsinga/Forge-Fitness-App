@@ -83,6 +83,7 @@ end
 movements = [
   {
     name: "Back Squat",
+    tag: "BackSquat",
     current_cue: "Traps into bar. Keep going lower than you think.",
     progression_rule: "Own 205 × 5×3 before moving up. Progress when depth and upper-back tightness are consistent.",
     notes: <<~NOTES
@@ -98,6 +99,7 @@ movements = [
   },
   {
     name: "Bench Press",
+    tag: "BenchPress",
     current_cue: "Stay tight. Control the descent. Press with clean reps.",
     progression_rule: "Hold 145 × 3×8 until all reps are clean, then consider adding weight.",
     notes: <<~NOTES
@@ -110,6 +112,7 @@ movements = [
   },
   {
     name: "Bent Over Row",
+    tag: "BentOverRow",
     current_cue: "Brace hard. Pull with control. Avoid turning it into a heave.",
     progression_rule: "Stay at 145 × 3×8 until grip, torso position, and rep quality are consistent.",
     notes: <<~NOTES
@@ -120,6 +123,7 @@ movements = [
   },
   {
     name: "RDL",
+    tag: "RDL",
     current_cue: "Hips back. Keep lats tight. Feel hamstrings without chasing range.",
     progression_rule: "Build from 175 × 3×10 with clean hinge mechanics and no low-back irritation.",
     notes: <<~NOTES
@@ -130,6 +134,7 @@ movements = [
   },
   {
     name: "Sumo Deadlift",
+    tag: "SumoDeadlift",
     current_cue: "Wedge in. Push the floor away. Keep the bar close.",
     progression_rule: "Progress only when setup, grip, and bar path feel repeatable.",
     notes: <<~NOTES
@@ -140,6 +145,7 @@ movements = [
   },
   {
     name: "Power Clean",
+    tag: "PowerClean",
     current_cue: "Stay patient off the floor. Finish tall. Fast elbows.",
     progression_rule: "Prioritize crisp positions and speed before adding load.",
     notes: <<~NOTES
@@ -150,6 +156,7 @@ movements = [
   },
   {
     name: "Overhead Squat",
+    tag: "OverheadSquat",
     current_cue: "Own the position. Do not force range if neck or shoulders feel irritated.",
     progression_rule: "Use cautiously when neck/shoulders are stiff. Prioritize mobility and positions over load.",
     notes: <<~NOTES
@@ -162,6 +169,7 @@ movements = [
   },
   {
     name: "Drop Snatch",
+    tag: "DropSnatch",
     current_cue: "Fast under the bar. Stable overhead. Do not chase speed if shoulders feel off.",
     progression_rule: "Progress only when overhead position feels stable and recovery is good.",
     notes: <<~NOTES

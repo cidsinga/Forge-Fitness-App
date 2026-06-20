@@ -32,6 +32,11 @@
       <h1 class="mt-5 text-4xl font-black tracking-tight text-white">
         <%= @movement.name %>
       </h1>
+      <% if @movement.tag.present? %>
+        <p class="mt-3 font-mono text-base font-bold text-amber-200/70">
+          #<%= @movement.tag %>
+        </p>
+      <% end %>
     </div>
 
     <div class="space-y-6 px-6 py-6 sm:px-8">
