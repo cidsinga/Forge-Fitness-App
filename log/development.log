@@ -821,3 +821,198 @@ Started GET "/.well-known/appspecific/com.chrome.devtools.json" for ::1 at 2026-
   
 ActionController::RoutingError (No route matches [GET] "/.well-known/appspecific/com.chrome.devtools.json"):
   
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (4.6ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-05-09' AND "workouts"."workout_type" = 'Lower' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-05-15' AND "workouts"."workout_type" = 'Lower' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-06-02' AND "workouts"."workout_type" = 'Lower' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Update (3.7ms)[0m  [1m[33mUPDATE "workouts" SET "raw_notes" = '#BackSquat
+6x3 @ 195
+
+Good weight. Maybe bump it up next time.
+When you think you''re in the bottom... keep going lol.
+Did an extra set to implement some advice from ChatGPT.
+', "updated_at" = '2026-06-20 16:20:26.017408' WHERE "workouts"."id" = 5 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-06-13' AND "workouts"."workout_type" = 'Lower' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-06-18' AND "workouts"."workout_type" = 'Upper' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.5ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Back Squat' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Update (1.7ms)[0m  [1m[33mUPDATE "movements" SET "progression_rule" = 'Own 205 × 5×3 before moving up. Progress when depth and upper-back tightness are consistent.', "notes" = 'Goal: build a high-quality path toward a 315 lb squat.
+
+Prioritize depth, upper-back tightness, and repeatable form over rushing weight increases.
+
+Recent notes:
+- 185 exposed depth limitations.
+- 195 initially felt tough, then became more solid.
+- 205 is currently a good challenge.
+', "updated_at" = '2026-06-20 16:20:26.034475' WHERE "movements"."id" = 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.2ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Bench Press' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Update (1.3ms)[0m  [1m[33mUPDATE "movements" SET "current_cue" = 'Stay tight. Control the descent. Press with clean reps.', "progression_rule" = 'Hold 145 × 3×8 until all reps are clean, then consider adding weight.', "notes" = 'Current working weight has been around 145 for 3×8.
+
+Long-term goal: 225 lb bench.
+
+Do not rush progression if shoulder/neck irritation is present.
+', "updated_at" = '2026-06-20 16:20:26.039797' WHERE "movements"."id" = 2 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Bent Over Row' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Create (2.4ms)[0m  [1m[32mINSERT INTO "movements" ("name", "current_cue", "progression_rule", "notes", "created_at", "updated_at") VALUES ('Bent Over Row', 'Brace hard. Pull with control. Avoid turning it into a heave.', 'Stay at 145 × 3×8 until grip, torso position, and rep quality are consistent.', 'Current working weight has been around 145 for 3×8.
+
+Reduced reps from higher-rep sets to manage grip fatigue and keep the session tighter.
+', '2026-06-20 16:20:26.043930', '2026-06-20 16:20:26.043930') RETURNING "id" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.5ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'RDL' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Create (1.2ms)[0m  [1m[32mINSERT INTO "movements" ("name", "current_cue", "progression_rule", "notes", "created_at", "updated_at") VALUES ('RDL', 'Hips back. Keep lats tight. Feel hamstrings without chasing range.', 'Build from 175 × 3×10 with clean hinge mechanics and no low-back irritation.', 'Current recent work: 175 × 3×10.
+
+Watch low-back response due to prior low-right back pain after heavier deadlift work.
+', '2026-06-20 16:20:26.060090', '2026-06-20 16:20:26.060090') RETURNING "id" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.3ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Sumo Deadlift' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Create (1.5ms)[0m  [1m[32mINSERT INTO "movements" ("name", "current_cue", "progression_rule", "notes", "created_at", "updated_at") VALUES ('Sumo Deadlift', 'Wedge in. Push the floor away. Keep the bar close.', 'Progress only when setup, grip, and bar path feel repeatable.', 'Recent work included 5×5 @ 245.
+
+Grip and smooth bar center have been limiting factors. Chalk helps. Straps may be worth considering later.
+', '2026-06-20 16:20:26.064138', '2026-06-20 16:20:26.064138') RETURNING "id" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Power Clean' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Create (1.1ms)[0m  [1m[32mINSERT INTO "movements" ("name", "current_cue", "progression_rule", "notes", "created_at", "updated_at") VALUES ('Power Clean', 'Stay patient off the floor. Finish tall. Fast elbows.', 'Prioritize crisp positions and speed before adding load.', 'Current known power clean max: 175 lb.
+
+Treat Olympic lift days as skill plus power, not ego lifting.
+', '2026-06-20 16:20:26.067993', '2026-06-20 16:20:26.067993') RETURNING "id" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Overhead Squat' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Create (1.1ms)[0m  [1m[32mINSERT INTO "movements" ("name", "current_cue", "progression_rule", "notes", "created_at", "updated_at") VALUES ('Overhead Squat', 'Own the position. Do not force range if neck or shoulders feel irritated.', 'Use cautiously when neck/shoulders are stiff. Prioritize mobility and positions over load.', 'Neck and shoulders were wrecked two days after overhead squats/drop snatches.
+
+Looking up was the most uncomfortable movement afterward.
+
+Use this movement as a signal for mobility and recovery, not just strength.
+', '2026-06-20 16:20:26.071951', '2026-06-20 16:20:26.071951') RETURNING "id" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Drop Snatch' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Create (1.1ms)[0m  [1m[32mINSERT INTO "movements" ("name", "current_cue", "progression_rule", "notes", "created_at", "updated_at") VALUES ('Drop Snatch', 'Fast under the bar. Stable overhead. Do not chase speed if shoulders feel off.', 'Progress only when overhead position feels stable and recovery is good.', 'Related to prior neck/shoulder stiffness after overhead work.
+
+Be careful stacking this with other overhead movements if recovery is compromised.
+', '2026-06-20 16:20:26.075343', '2026-06-20 16:20:26.075343') RETURNING "id" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Count (6.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "workouts" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "movements" /*application='ForgeFitnessApp'*/[0m
+Started GET "/movements" for ::1 at 2026-06-20 09:20:34 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (35.9ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 50.6ms | GC: 20.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 55.8ms | GC: 24.6ms)
+Completed 200 OK in 63ms (Views: 11.1ms | ActiveRecord: 47.2ms (2 queries, 0 cached) | GC: 29.2ms)
+
+
+Started GET "/movements/1" for ::1 at 2026-06-20 09:21:07 -0700
+Processing by MovementsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mMovement Load (0.9ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."id" = 1 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/controllers/movements_controller.rb:63:in 'MovementsController#set_movement'
+  Rendering layout layouts/application.html.erb
+  Rendering movements/show.html.erb within layouts/application
+  Rendered movements/show.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 2.3ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/movements" for ::1 at 2026-06-20 09:21:23 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.3ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movements/2" for ::1 at 2026-06-20 09:21:29 -0700
+Processing by MovementsController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mMovement Load (0.6ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."id" = 2 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/controllers/movements_controller.rb:63:in 'MovementsController#set_movement'
+  Rendering layout layouts/application.html.erb
+  Rendering movements/show.html.erb within layouts/application
+  Rendered movements/show.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movements" for ::1 at 2026-06-20 09:21:37 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.5ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 5.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 5.6ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/movements/3" for ::1 at 2026-06-20 09:21:39 -0700
+Processing by MovementsController#show as HTML
+  Parameters: {"id" => "3"}
+  [1m[36mMovement Load (0.7ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."id" = 3 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/controllers/movements_controller.rb:63:in 'MovementsController#set_movement'
+  Rendering layout layouts/application.html.erb
+  Rendering movements/show.html.erb within layouts/application
+  Rendered movements/show.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/movements" for ::1 at 2026-06-20 09:21:48 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.3ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 4.0ms | GC: 0.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.9ms)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/movements/3" for ::1 at 2026-06-20 09:22:22 -0700
+Processing by MovementsController#show as HTML
+  Parameters: {"id" => "3"}
+  [1m[36mMovement Load (0.9ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."id" = 3 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/controllers/movements_controller.rb:63:in 'MovementsController#set_movement'
+  Rendering layout layouts/application.html.erb
+  Rendering movements/show.html.erb within layouts/application
+  Rendered movements/show.html.erb within layouts/application (Duration: 3.5ms | GC: 1.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | GC: 1.1ms)
+Completed 200 OK in 10ms (Views: 5.2ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/movements" for ::1 at 2026-06-20 09:22:24 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.2ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 3.4ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.3ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
