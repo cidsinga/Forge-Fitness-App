@@ -2865,3 +2865,184 @@ Processing by WorkoutsController#show as HTML
 Completed 200 OK in 11ms (Views: 6.2ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 0.5ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (1.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-05-09' AND "workouts"."workout_type" = 'Lower' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-05-15' AND "workouts"."workout_type" = 'Lower' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-06-02' AND "workouts"."workout_type" = 'Lower' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-06-13' AND "workouts"."workout_type" = 'Lower' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-06-18' AND "workouts"."workout_type" = 'Upper' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (1.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Back Squat' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.2ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Bench Press' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.5ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Bent Over Row' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'RDL' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.3ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Sumo Deadlift' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.6ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Power Clean' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Overhead Squat' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Load (0.4ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Drop Snatch' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "workouts" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "movements" /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-06-17' AND "workouts"."workout_type" = 'Upper Body' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."date" = '2026-06-19' AND "workouts"."workout_type" = 'Lower Body' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mCACHE Movement Load (0.0ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Bench Press' LIMIT 1[0m
+  [1m[36mCACHE Movement Load (0.0ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Bent Over Row' LIMIT 1[0m
+  [1m[36mMovement Load (0.2ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Lateral Raise' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mCACHE Movement Load (0.0ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Back Squat' LIMIT 1[0m
+  [1m[36mMovement Load (0.2ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Romanian Deadlift' LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mExerciseEntry Load (2.0ms)[0m  [1m[34mSELECT "exercise_entries".* FROM "exercise_entries" WHERE "exercise_entries"."workout_id" = 8 AND "exercise_entries"."movement_id" = 2 AND "exercise_entries"."position" = 1 LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mExerciseEntry Load (0.6ms)[0m  [1m[34mSELECT "exercise_entries".* FROM "exercise_entries" WHERE "exercise_entries"."workout_id" = 8 AND "exercise_entries"."movement_id" = 3 AND "exercise_entries"."position" = 2 LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mExerciseEntry Load (0.7ms)[0m  [1m[34mSELECT "exercise_entries".* FROM "exercise_entries" WHERE "exercise_entries"."workout_id" = 8 AND "exercise_entries"."movement_id" = 9 AND "exercise_entries"."position" = 3 LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mExerciseEntry Load (0.7ms)[0m  [1m[34mSELECT "exercise_entries".* FROM "exercise_entries" WHERE "exercise_entries"."workout_id" = 9 AND "exercise_entries"."movement_id" = 1 AND "exercise_entries"."position" = 1 LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mExerciseEntry Load (0.5ms)[0m  [1m[34mSELECT "exercise_entries".* FROM "exercise_entries" WHERE "exercise_entries"."workout_id" = 9 AND "exercise_entries"."movement_id" = 10 AND "exercise_entries"."position" = 2 LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mCACHE Movement Load (0.0ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."name" = 'Bench Press' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='ForgeFitnessApp'*/[0m
+  [1m[36mMovement Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" WHERE "movements"."tag" = 'Strength' AND "movements"."id" != 2 LIMIT 1 /*application='ForgeFitnessApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*application='ForgeFitnessApp'*/[0m
+Started GET "/" for ::1 at 2026-06-20 19:44:50 -0700
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:27
+  [1m[36mWorkout Load (0.5ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" ORDER BY "workouts"."date" DESC, "workouts"."created_at" DESC /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:29
+  Rendered workouts/index.html.erb within layouts/application (Duration: 7.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | GC: 0.0ms)
+Completed 200 OK in 17ms (Views: 12.3ms | ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 2.3ms)
+
+
+Started GET "/" for ::1 at 2026-06-20 19:44:52 -0700
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:27
+  [1m[36mWorkout Load (0.6ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" ORDER BY "workouts"."date" DESC, "workouts"."created_at" DESC /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:29
+  Rendered workouts/index.html.erb within layouts/application (Duration: 4.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/workouts/11" for ::1 at 2026-06-20 19:45:07 -0700
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id" => "11"}
+  [1m[36mWorkout Load (0.7ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = 11 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/controllers/workouts_controller.rb:67:in 'WorkoutsController#set_workout'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExerciseEntry Load (0.6ms)[0m  [1m[34mSELECT "exercise_entries".* FROM "exercise_entries" WHERE "exercise_entries"."workout_id" = 11 ORDER BY "exercise_entries"."position" ASC, "exercise_entries"."created_at" ASC /*action='show',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/show.html.erb:3
+  [1m[36mMovement Load (0.6ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."id" = 4 /*action='show',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/show.html.erb:3
+  Rendered workouts/show.html.erb within layouts/application (Duration: 6.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 7.1ms | ActiveRecord: 1.9ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/workouts" for ::1 at 2026-06-20 19:45:10 -0700
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:27
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" ORDER BY "workouts"."date" DESC, "workouts"."created_at" DESC /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:29
+  Rendered workouts/index.html.erb within layouts/application (Duration: 3.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 4.9ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/workouts" for ::1 at 2026-06-20 19:45:39 -0700
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:27
+  [1m[36mWorkout Load (0.6ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" ORDER BY "workouts"."date" DESC, "workouts"."created_at" DESC /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:29
+  Rendered workouts/index.html.erb within layouts/application (Duration: 4.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | GC: 0.4ms)
+Completed 200 OK in 9ms (Views: 6.2ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-20 19:45:39 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/movements" for ::1 at 2026-06-20 19:45:43 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.3ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/movements/1" for ::1 at 2026-06-20 19:45:50 -0700
+Processing by MovementsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mMovement Load (0.6ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."id" = 1 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/controllers/movements_controller.rb:63:in 'MovementsController#set_movement'
+  Rendering layout layouts/application.html.erb
+  Rendering movements/show.html.erb within layouts/application
+  Rendered movements/show.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movements" for ::1 at 2026-06-20 19:45:53 -0700
+Processing by MovementsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movements/index.html.erb within layouts/application
+  [1m[36mMovement Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "movements" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:25
+  [1m[36mMovement Load (0.5ms)[0m  [1m[34mSELECT "movements".* FROM "movements" /*action='index',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/views/movements/index.html.erb:27
+  Rendered movements/index.html.erb within layouts/application (Duration: 4.4ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.2ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/movements/1" for ::1 at 2026-06-20 19:46:14 -0700
+Processing by MovementsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mMovement Load (1.0ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."id" = 1 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/controllers/movements_controller.rb:63:in 'MovementsController#set_movement'
+  Rendering layout layouts/application.html.erb
+  Rendering movements/show.html.erb within layouts/application
+  Rendered movements/show.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/movements/2" for ::1 at 2026-06-20 19:46:15 -0700
+Processing by MovementsController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mMovement Load (0.5ms)[0m  [1m[34mSELECT "movements".* FROM "movements" WHERE "movements"."id" = 2 LIMIT 1 /*action='show',application='ForgeFitnessApp',controller='movements'*/[0m
+  ↳ app/controllers/movements_controller.rb:63:in 'MovementsController#set_movement'
+  Rendering layout layouts/application.html.erb
+  Rendering movements/show.html.erb within layouts/application
+  Rendered movements/show.html.erb within layouts/application (Duration: 0.8ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.2ms)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for ::1 at 2026-06-20 19:46:18 -0700
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "workouts" LIMIT 1 /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:27
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" ORDER BY "workouts"."date" DESC, "workouts"."created_at" DESC /*action='index',application='ForgeFitnessApp',controller='workouts'*/[0m
+  ↳ app/views/workouts/index.html.erb:29
+  Rendered workouts/index.html.erb within layouts/application (Duration: 3.3ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | GC: 0.1ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.1ms)
+
+

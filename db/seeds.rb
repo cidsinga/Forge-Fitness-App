@@ -274,3 +274,146 @@ ExerciseEntry.find_or_create_by!(
   entry.reps = 10
   entry.weight = 175
 end
+
+puts "Seeding exercise entries..."
+
+def find_or_update_movement!(name:, tag:)
+  movement = Movement.find_or_initialize_by(name: name)
+  movement.tag = tag if movement.respond_to?(:tag=)
+  movement.save!
+  movement
+end
+
+def find_or_update_workout!(date:, workout_type:, raw_notes:)
+  workout = Workout.find_or_initialize_by(date: date, workout_type: workout_type)
+  workout.raw_notes = raw_notes
+  workout.save!
+  workout
+end
+
+def find_or_update_exercise_entry!(workout:, movement:, position:, sets:, reps:, weight:, notes: nil)
+  entry = ExerciseEntry.find_or_initialize_by(
+    workout: workout,
+    movement: movement,
+    position: position
+  )
+
+  entry.assign_attributes(
+    sets: sets,
+    reps: reps,
+    weight: weight,
+    notes: notes
+  )
+
+  entry.save!
+  entry
+end
+
+bench_press = find_or_update_movement!(name: "Bench Press", tag: "Strength")
+bent_over_row = find_or_update_movement!(name: "Bent Over Row", tag: "Strength")
+lateral_raise = find_or_update_movement!(name: "Lateral Raise", tag: "Accessory")
+back_squat = find_or_update_movement!(name: "Back Squat", tag: "Strength")
+romanian_deadlift = find_or_update_movement!(name: "Romanian Deadlift", tag: "Strength")
+goblet_squat = find_or_update_movement!(name: "Goblet Squat", tag: "Strength")
+step_up = find_or_update_movement!(name: "Step Up", tag: "Accessory")
+tibialis_raise = find_or_update_movement!(name: "Tibialis Raise", tag: "Accessory")
+
+upper_body = find_or_update_workout!(
+  date: Date.new(2026, 6, 17),
+  workout_type: "Upper Body",
+  raw_notes: "Bench Press 3x8 @ 145\nBent Over Row 3x8 @ 145\nLateral Raise 2x12 @ 15"
+)
+
+lower_body = find_or_update_workout!(
+  date: Date.new(2026, 6, 19),
+  workout_type: "Lower Body",
+  raw_notes: "Back Squat 5x3 @ 205\nRomanian Deadlift 3x10 @ 175"
+)
+
+accessory_lower = find_or_update_workout!(
+  date: Date.new(2026, 6, 20),
+  workout_type: "Lower Accessory",
+  raw_notes: "Goblet Squat 3x10\nStep Ups 2x10 per leg\nTibialis Raises 2x15"
+)
+
+find_or_update_exercise_entry!(
+  workout: upper_body,
+  movement: bench_press,
+  position: 1,
+  sets: 3,
+  reps: 8,
+  weight: 145,
+  notes: "Solid working weight."
+)
+
+find_or_update_exercise_entry!(
+  workout: upper_body,
+  movement: bent_over_row,
+  position: 2,
+  sets: 3,
+  reps: 8,
+  weight: 145,
+  notes: "Keep torso angle consistent."
+)
+
+find_or_update_exercise_entry!(
+  workout: upper_body,
+  movement: lateral_raise,
+  position: 3,
+  sets: 2,
+  reps: 12,
+  weight: 15,
+  notes: "Controlled reps."
+)
+
+find_or_update_exercise_entry!(
+  workout: lower_body,
+  movement: back_squat,
+  position: 1,
+  sets: 5,
+  reps: 3,
+  weight: 205,
+  notes: "Focus on depth and bracing."
+)
+
+find_or_update_exercise_entry!(
+  workout: lower_body,
+  movement: romanian_deadlift,
+  position: 2,
+  sets: 3,
+  reps: 10,
+  weight: 175,
+  notes: "Grip got tired near the end."
+)
+
+find_or_update_exercise_entry!(
+  workout: accessory_lower,
+  movement: goblet_squat,
+  position: 1,
+  sets: 3,
+  reps: 10,
+  weight: 53,
+  notes: "24kg kettlebell."
+)
+
+find_or_update_exercise_entry!(
+  workout: accessory_lower,
+  movement: step_up,
+  position: 2,
+  sets: 2,
+  reps: 10,
+  weight: 0,
+  notes: "Per leg."
+)
+
+find_or_update_exercise_entry!(
+  workout: accessory_lower,
+  movement: tibialis_raise,
+  position: 3,
+  sets: 2,
+  reps: 15,
+  weight: 0,
+  notes: "Controlled tempo."
+)
+
+puts "Seeded #{ExerciseEntry.count} exercise entries."
