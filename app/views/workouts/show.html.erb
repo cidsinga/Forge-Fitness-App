@@ -1,4 +1,6 @@
 <% content_for :title, "Workout" %>
+<% exercise_entries = @workout.exercise_entries.includes(:movement).ordered.to_a %>
+<% total_sets = exercise_entries.sum { |entry| entry.sets.to_i } %>
 <section class="mx-auto max-w-4xl space-y-6">
   <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
     <%= link_to "← Back to workouts", workouts_path, class: "text-sm font-bold text-zinc-400 transition hover:text-amber-200" %>
@@ -21,46 +23,62 @@
           <%= @workout.date&.strftime("%A, %B %-d, %Y") || "No date" %>
         </time>
       </div>
-      <h1 class="mt-5 text-4xl font-black tracking-tight text-white">
-        <%= @workout.workout_type.presence || "Workout" %>
-      </h1>
-    </div>
-    <div class="px-6 py-6 sm:px-8">
-      <div class="mb-3 flex items-center justify-between">
-        <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Raw notes</h2>
-        <span class="text-xs font-medium text-zinc-600">Version 1 capture</span>
+      <div class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Workout log</p>
+          <h1 class="mt-2 text-4xl font-black tracking-tight text-white">
+            <%= @workout.workout_type.presence || "Workout" %>
+          </h1>
+        </div>
+        <%= link_to "Add Exercise",
+          new_workout_exercise_entry_path(@workout),
+          class: "inline-flex items-center justify-center rounded-2xl bg-amber-300 px-5 py-3 text-sm font-black text-zinc-950 transition hover:bg-amber-200" %>
       </div>
-      <div class="rounded-3xl border border-white/10 bg-black/30 p-5">
-        <pre class="whitespace-pre-wrap font-mono text-sm leading-7 text-zinc-200"><%= @workout.raw_notes.presence || "No notes recorded." %></pre>
+    </div>
+    <div class="grid gap-3 px-6 py-5 sm:grid-cols-2 sm:px-8">
+      <div class="rounded-3xl border border-white/10 bg-black/25 p-4">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">Exercises</p>
+        <p class="mt-2 text-2xl font-black text-white"><%= exercise_entries.size %></p>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-black/25 p-4">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">Total sets</p>
+        <p class="mt-2 text-2xl font-black text-white"><%= total_sets %></p>
       </div>
     </div>
   </article>
   <section class="rounded-3xl border border-white/10 bg-zinc-900/80 p-6 shadow-2xl shadow-black/30 sm:p-8">
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <p class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Exercise entries</p>
-        <h2 class="mt-2 text-2xl font-black tracking-tight text-white">Movements logged</h2>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Logged exercises</p>
+        <h2 class="mt-2 text-2xl font-black tracking-tight text-white">Movements performed</h2>
       </div>
       <%= link_to "Add Exercise",
         new_workout_exercise_entry_path(@workout),
-        class: "inline-flex items-center justify-center rounded-2xl bg-amber-300 px-4 py-2 text-sm font-black text-zinc-950 transition hover:bg-amber-200" %>
+        class: "inline-flex items-center justify-center rounded-2xl border border-amber-300/30 bg-amber-300/10 px-4 py-2 text-sm font-black text-amber-200 transition hover:bg-amber-300 hover:text-zinc-950" %>
     </div>
-    <% if @workout.exercise_entries.any? %>
+    <% if exercise_entries.any? %>
       <div class="mt-6 space-y-3">
-        <% @workout.exercise_entries.includes(:movement).ordered.each do |entry| %>
-          <div class="rounded-3xl border border-white/10 bg-black/30 p-5">
+        <% exercise_entries.each do |entry| %>
+          <div class="rounded-3xl border border-white/10 bg-black/30 p-5 transition hover:border-white/20 hover:bg-black/40">
             <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <h3 class="text-lg font-black text-white">
-                  <%= entry.movement.name %>
-                </h3>
+                <div class="flex flex-wrap items-center gap-3">
+                  <h3 class="text-lg font-black text-white">
+                    <%= entry.movement.name %>
+                  </h3>
+                  <% if entry.movement.respond_to?(:tag) && entry.movement.tag.present? %>
+                    <span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
+                      <%= entry.movement.tag %>
+                    </span>
+                  <% end %>
+                </div>
                 <% if entry.summary.present? %>
-                  <p class="mt-1 text-sm font-semibold text-zinc-300">
+                  <p class="mt-2 text-sm font-semibold text-amber-100">
                     <%= entry.summary %>
                   </p>
                 <% end %>
                 <% if entry.notes.present? %>
-                  <p class="mt-3 text-sm leading-6 text-zinc-400">
+                  <p class="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
                     <%= entry.notes %>
                   </p>
                 <% end %>
@@ -80,10 +98,25 @@
         <% end %>
       </div>
     <% else %>
-      <div class="mt-6 rounded-3xl border border-dashed border-white/10 bg-black/20 p-6 text-center">
-        <p class="font-bold text-zinc-300">No exercise entries yet.</p>
-        <p class="mt-1 text-sm text-zinc-500">Add the first movement for this workout.</p>
+      <div class="mt-6 rounded-3xl border border-dashed border-white/10 bg-black/20 p-8 text-center">
+        <p class="text-lg font-black text-zinc-200">No exercises logged yet.</p>
+        <p class="mt-2 text-sm text-zinc-500">Start turning raw notes into structured training history.</p>
+        <%= link_to "Add first exercise",
+          new_workout_exercise_entry_path(@workout),
+          class: "mt-5 inline-flex items-center justify-center rounded-2xl bg-amber-300 px-5 py-3 text-sm font-black text-zinc-950 transition hover:bg-amber-200" %>
       </div>
     <% end %>
+  </section>
+  <section class="rounded-3xl border border-white/10 bg-zinc-900/60 p-6 shadow-2xl shadow-black/20 sm:p-8">
+    <div class="mb-3 flex items-center justify-between">
+      <div>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Raw notes</p>
+        <h2 class="mt-2 text-xl font-black tracking-tight text-white">Scratchpad</h2>
+      </div>
+      <span class="text-xs font-medium text-zinc-600">Version 1 capture</span>
+    </div>
+    <div class="rounded-3xl border border-white/10 bg-black/30 p-5">
+      <pre class="whitespace-pre-wrap font-mono text-sm leading-7 text-zinc-300"><%= @workout.raw_notes.presence || "No notes recorded." %></pre>
+    </div>
   </section>
 </section>
