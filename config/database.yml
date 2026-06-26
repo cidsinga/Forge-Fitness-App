@@ -90,6 +90,7 @@ production:
     database: forge_fitness_app_production
     username: forge_fitness_app
     password: <%= ENV["FORGE_FITNESS_APP_DATABASE_PASSWORD"] %>
+    host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
   cache:
     <<: *primary_production
     database: forge_fitness_app_production_cache
