@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_20_222608) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_08_222054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_20_222608) do
     t.bigint "workout_id", null: false
     t.index ["movement_id"], name: "index_exercise_entries_on_movement_id"
     t.index ["workout_id"], name: "index_exercise_entries_on_workout_id"
+  end
+
+  create_table "exercise_sets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "exercise_entry_id", null: false
+    t.integer "reps", null: false
+    t.integer "set_number", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "weight", precision: 8, scale: 2
+    t.index ["exercise_entry_id", "set_number"], name: "index_exercise_sets_on_exercise_entry_id_and_set_number", unique: true
+    t.index ["exercise_entry_id"], name: "index_exercise_sets_on_exercise_entry_id"
   end
 
   create_table "movements", force: :cascade do |t|
@@ -49,4 +60,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_20_222608) do
 
   add_foreign_key "exercise_entries", "movements"
   add_foreign_key "exercise_entries", "workouts"
+  add_foreign_key "exercise_sets", "exercise_entries"
 end

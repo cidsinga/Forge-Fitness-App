@@ -1,14 +1,11 @@
 <% content_for :title, @movement.name %>
-
 <section class="mx-auto max-w-4xl space-y-6">
   <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
     <%= link_to "← Back to movements", movements_path, class: "text-sm font-bold text-zinc-400 transition hover:text-amber-200" %>
-
     <div class="flex items-center gap-2">
       <%= link_to "Edit",
         edit_movement_path(@movement),
         class: "rounded-2xl border border-white/10 px-4 py-2 text-sm font-bold text-zinc-200 transition hover:bg-white/10 hover:text-white" %>
-
       <%= button_to "Delete",
         @movement,
         method: :delete,
@@ -16,19 +13,16 @@
         class: "rounded-2xl border border-red-400/20 px-4 py-2 text-sm font-bold text-red-200 transition hover:bg-red-400/10" %>
     </div>
   </div>
-
   <article class="overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/80 shadow-2xl shadow-black/30">
     <div class="border-b border-white/10 bg-white/[0.03] px-6 py-6 sm:px-8">
       <div class="flex flex-wrap items-center gap-3">
         <span class="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-amber-200">
           Movement
         </span>
-
         <span class="text-sm font-medium text-zinc-400">
           Training memory
         </span>
       </div>
-
       <h1 class="mt-5 text-4xl font-black tracking-tight text-white">
         <%= @movement.name %>
       </h1>
@@ -38,7 +32,6 @@
         </p>
       <% end %>
     </div>
-
     <div class="space-y-6 px-6 py-6 sm:px-8">
       <section class="rounded-3xl border border-amber-300/15 bg-amber-300/10 p-5">
         <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-amber-200/80">Current cue</h2>
@@ -46,19 +39,90 @@
           <%= @movement.current_cue.presence || "No current cue recorded." %>
         </div>
       </section>
-
       <section class="rounded-3xl border border-white/10 bg-black/30 p-5">
         <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Progression rule</h2>
         <div class="mt-3 whitespace-pre-wrap text-base leading-7 text-zinc-200">
           <%= @movement.progression_rule.presence || "No progression rule recorded." %>
         </div>
       </section>
-
       <section class="rounded-3xl border border-white/10 bg-black/30 p-5">
         <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">Notes</h2>
         <div class="mt-3 whitespace-pre-wrap text-base leading-7 text-zinc-200">
           <%= @movement.notes.presence || "No notes recorded." %>
         </div>
+      </section>
+      <section class="rounded-3xl border border-white/10 bg-black/30 p-5">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-zinc-500">
+            Recent history
+          </h2>
+          <span class="text-xs font-medium text-zinc-500">
+            Last <%= @recent_exercise_entries.size %> logged
+          </span>
+        </div>
+        <% if @recent_exercise_entries.any? %>
+          <div class="mt-5 space-y-4">
+            <% @recent_exercise_entries.each do |entry| %>
+              <article class="rounded-2xl border border-white/10 bg-zinc-950/70 p-5">
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p class="text-lg font-black text-white">
+                      <% if entry.workout.date.present? %>
+                        <%= entry.workout.date.strftime("%b %-d, %Y") %>
+                      <% else %>
+                        Undated workout
+                      <% end %>
+                    </p>
+                    <% if entry.exercise_sets.any? %>
+                      <div class="mt-3 space-y-1">
+                        <% entry.exercise_sets.each do |exercise_set| %>
+                          <p class="text-sm font-medium text-zinc-200">
+                            <span class="text-zinc-500">
+                              Set <%= exercise_set.set_number %>:
+                            </span>
+                            <% if exercise_set.weight.present? %>
+                              <%= number_with_precision(exercise_set.weight, precision: 2, strip_insignificant_zeros: true) %> lb
+                              <span class="text-zinc-500">×</span>
+                            <% end %>
+                            <%= pluralize(exercise_set.reps, "rep") %>
+                          </p>
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <p class="mt-3 text-sm font-medium text-zinc-200">
+                        <% if entry.weight.present? %>
+                          <%= number_with_precision(entry.weight, precision: 2, strip_insignificant_zeros: true) %> lb
+                          <span class="text-zinc-500">×</span>
+                        <% end %>
+                        <% if entry.sets.present? && entry.reps.present? %>
+                          <%= pluralize(entry.sets, "set") %>
+                          <span class="text-zinc-500">×</span>
+                          <%= pluralize(entry.reps, "rep") %>
+                        <% else %>
+                          <%= entry.summary.presence || "No set details recorded." %>
+                        <% end %>
+                      </p>
+                    <% end %>
+                  </div>
+                  <%= link_to "View workout",
+                    workout_path(entry.workout),
+                    class: "inline-flex rounded-2xl border border-amber-300/20 px-3 py-2 text-sm font-bold text-amber-200 transition hover:bg-amber-300/10 hover:text-amber-100" %>
+                </div>
+                <% if entry.notes.present? %>
+                  <div class="mt-4 rounded-2xl border border-white/10 bg-black/30 p-4">
+                    <p class="whitespace-pre-wrap text-sm leading-6 text-zinc-300">
+                      <%= entry.notes %>
+                    </p>
+                  </div>
+                <% end %>
+              </article>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="mt-4 text-base leading-7 text-zinc-400">
+            No logged history for this movement yet.
+          </p>
+        <% end %>
       </section>
     </div>
   </article>

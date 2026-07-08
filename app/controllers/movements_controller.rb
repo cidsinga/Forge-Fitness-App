@@ -7,8 +7,15 @@ class MovementsController < ApplicationController
   end
 
   # GET /movements/1 or /movements/1.json
-  def show
-  end
+def show
+  @recent_exercise_entries =
+    @movement
+      .exercise_entries
+      .includes(:workout, :exercise_sets)
+      .joins(:workout)
+      .order("workouts.date DESC, exercise_entries.position ASC, exercise_entries.created_at DESC")
+      .limit(3)
+end
 
   # GET /movements/new
   def new
