@@ -4,7 +4,9 @@ class ExerciseEntry < ApplicationRecord
 
   has_many :exercise_sets, -> { order(:set_number) }, dependent: :destroy
 
-  accepts_nested_attributes_for :exercise_sets, allow_destroy: true
+accepts_nested_attributes_for :exercise_sets,
+  allow_destroy: true,
+  reject_if: :blank_exercise_set?
 
   validates :sets, numericality: { only_integer: true, greater_than: 0 }, allow_blank: true
   validates :reps, numericality: { only_integer: true, greater_than: 0 }, allow_blank: true
@@ -30,4 +32,10 @@ class ExerciseEntry < ApplicationRecord
       parts.join(" × ")
     end
   end
+
+  private
+
+def blank_exercise_set?(attributes)
+  attributes["weight"].blank? && attributes["reps"].blank?
+end
 end

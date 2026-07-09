@@ -1,4 +1,4 @@
-<%= form_with(model: [workout, exercise_entry], class: "space-y-6") do |form| %>
+<%= form_with(model: [workout, exercise_entry], class: "space-y-6", data: { controller: "exercise-entries" }) do |form| %>
   <% if exercise_entry.errors.any? %>
     <div class="rounded-2xl border border-red-400/20 bg-red-400/10 p-4">
       <h2 class="text-sm font-bold text-red-200">
@@ -11,32 +11,47 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.label :movement_id, "Movement", class: "block text-sm font-bold text-zinc-200" %>
-    <%= form.collection_select :movement_id,
-          Movement.order(:name),
-          :id,
-          :name,
-          { prompt: "Choose a movement" },
-          class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
-  </div>
-  <div class="grid gap-5 sm:grid-cols-3">
+  <% exercise_entry.exercise_sets.build(set_number: 1) if exercise_entry.exercise_sets.empty? %>
+  <div data-exercise-entries-target="row">
     <div>
-      <%= form.label :sets, class: "block text-sm font-bold text-zinc-200" %>
-      <%= form.number_field :sets, min: 1, class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
+      <%= form.label :movement_id, "Movement", class: "block text-sm font-bold text-zinc-200" %>
+      <%= form.collection_select :movement_id,
+            Movement.order(:name),
+            :id,
+            :name,
+            { prompt: "Choose a movement" },
+            class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
     </div>
-    <div>
-      <%= form.label :reps, class: "block text-sm font-bold text-zinc-200" %>
-      <%= form.number_field :reps, min: 1, class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
+    <div class="mt-6">
+      <div class="mb-3 flex items-center justify-between gap-4">
+        <div>
+          <p class="text-sm font-bold text-zinc-200">Sets</p>
+          <p class="mt-1 text-xs text-zinc-500">Track each set independently.</p>
+        </div>
+        <button type="button"
+          class="rounded-xl border border-amber-300/30 bg-amber-300/10 px-3 py-2 text-xs font-black text-amber-200 transition hover:bg-amber-300 hover:text-zinc-950"
+          data-action="exercise-entries#addSet">
+          Add Set
+        </button>
+      </div>
+      <div class="space-y-3" data-exercise-entries-target="setContainer">
+        <%= form.fields_for :exercise_sets do |set_form| %>
+          <%= render "workouts/exercise_set_fields", set_form: set_form %>
+        <% end %>
+      </div>
+      <template data-exercise-entries-target="setTemplate">
+        <%= form.fields_for :exercise_sets, ExerciseSet.new, child_index: "NEW_SET_RECORD" do |set_form| %>
+          <%= render "workouts/exercise_set_fields", set_form: set_form %>
+        <% end %>
+      </template>
     </div>
-    <div>
-      <%= form.label :weight, "Weight", class: "block text-sm font-bold text-zinc-200" %>
-      <%= form.number_field :weight, step: "0.5", min: 0, class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
+    <div class="mt-6">
+      <%= form.label :notes, "Entry notes", class: "block text-sm font-bold text-zinc-200" %>
+      <%= form.text_area :notes,
+        rows: 4,
+        placeholder: "Optional note for this movement",
+        class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition placeholder:text-zinc-600 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
     </div>
-  </div>
-  <div>
-    <%= form.label :notes, class: "block text-sm font-bold text-zinc-200" %>
-    <%= form.text_area :notes, rows: 4, class: "mt-2 block w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-zinc-100 shadow-sm outline-none transition focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20" %>
   </div>
   <div class="flex items-center justify-between gap-4">
     <%= link_to "Cancel", workout_path(workout), class: "rounded-xl border border-white/10 px-4 py-2 text-sm font-bold text-zinc-300 transition hover:bg-white/5" %>

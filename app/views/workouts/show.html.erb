@@ -1,6 +1,6 @@
 <% content_for :title, "Workout" %>
-<% exercise_entries = @workout.exercise_entries.includes(:movement).ordered.to_a %>
-<% total_sets = exercise_entries.sum { |entry| entry.sets.to_i } %>
+<% exercise_entries = @workout.exercise_entries.includes(:movement, :exercise_sets).ordered.to_a %>
+<% total_sets = exercise_entries.sum { |entry| entry.exercise_sets.any? ? entry.exercise_sets.size : entry.sets.to_i } %>
 <section class="mx-auto max-w-4xl space-y-6">
   <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
     <%= link_to "← Back to workouts", workouts_path, class: "text-sm font-bold text-zinc-400 transition hover:text-amber-200" %>

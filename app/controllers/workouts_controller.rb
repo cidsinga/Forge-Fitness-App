@@ -64,15 +64,22 @@ class WorkoutsController < ApplicationController
   private
 
   def set_workout
-    @workout = Workout.find(params.expect(:id))
+    @workout = Workout.find(params[:id])
   end
 
   def build_empty_exercise_entries
-    @workout.exercise_entries.build if @workout.exercise_entries.empty?
+    if @workout.exercise_entries.empty?
+      exercise_entry = @workout.exercise_entries.build
+      exercise_entry.exercise_sets.build(set_number: 1)
+    else
+      @workout.exercise_entries.each do |exercise_entry|
+        exercise_entry.exercise_sets.build(set_number: 1) if exercise_entry.exercise_sets.empty?
+      end
+    end
   end
 
   def workout_params
-    params.expect(workout: [
+    params.require(:workout).permit(
       :date,
       :workout_type,
       :raw_notes,
@@ -84,8 +91,15 @@ class WorkoutsController < ApplicationController
         :weight,
         :notes,
         :position,
-        :_destroy
+        :_destroy,
+        exercise_sets_attributes: [
+          :id,
+          :set_number,
+          :weight,
+          :reps,
+          :_destroy
+        ]
       ]
-    ])
+    )
   end
 end

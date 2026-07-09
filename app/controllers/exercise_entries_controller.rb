@@ -4,6 +4,7 @@ class ExerciseEntriesController < ApplicationController
 
   def new
     @exercise_entry = @workout.exercise_entries.build
+    @exercise_entry.exercise_sets.build(set_number: 1)
   end
 
   def create
@@ -17,6 +18,7 @@ class ExerciseEntriesController < ApplicationController
   end
 
   def edit
+    @exercise_entry.exercise_sets.build(set_number: 1) if @exercise_entry.exercise_sets.empty?
   end
 
   def update
@@ -49,7 +51,14 @@ class ExerciseEntriesController < ApplicationController
       :reps,
       :weight,
       :notes,
-      :position
+      :position,
+      exercise_sets_attributes: [
+        :id,
+        :set_number,
+        :weight,
+        :reps,
+        :_destroy
+      ]
     )
   end
 end
