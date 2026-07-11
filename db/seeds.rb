@@ -309,14 +309,14 @@ def find_or_update_exercise_entry!(workout:, movement:, position:, sets:, reps:,
   entry
 end
 
-bench_press = find_or_update_movement!(name: "Bench Press", tag: "Strength")
-bent_over_row = find_or_update_movement!(name: "Bent Over Row", tag: "Strength")
-lateral_raise = find_or_update_movement!(name: "Lateral Raise", tag: "Accessory")
-back_squat = find_or_update_movement!(name: "Back Squat", tag: "Strength")
-romanian_deadlift = find_or_update_movement!(name: "Romanian Deadlift", tag: "Strength")
-goblet_squat = find_or_update_movement!(name: "Goblet Squat", tag: "Strength")
-step_up = find_or_update_movement!(name: "Step Up", tag: "Accessory")
-tibialis_raise = find_or_update_movement!(name: "Tibialis Raise", tag: "Accessory")
+bench_press = find_or_update_movement!(name: "Bench Press", tag: "BenchPress")
+bent_over_row = find_or_update_movement!(name: "Bent Over Row", tag: "BentOverRow")
+lateral_raise = find_or_update_movement!(name: "Lateral Raise", tag: "LateralRaise")
+back_squat = find_or_update_movement!(name: "Back Squat", tag: "BackSquat")
+romanian_deadlift = find_or_update_movement!(name: "Romanian Deadlift", tag: "RomanianDeadlift")
+goblet_squat = find_or_update_movement!(name: "Goblet Squat", tag: "GobletSquat")
+step_up = find_or_update_movement!(name: "Step Up", tag: "StepUp")
+tibialis_raise = find_or_update_movement!(name: "Tibialis Raise", tag: "TibialisRaise")
 
 upper_body = find_or_update_workout!(
   date: Date.new(2026, 6, 17),

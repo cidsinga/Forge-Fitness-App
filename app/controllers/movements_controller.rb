@@ -56,13 +56,16 @@ end
 
   # DELETE /movements/1 or /movements/1.json
   def destroy
-    @movement.destroy!
+  @movement.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to movements_path, notice: "Movement was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
-  end
+  redirect_to movements_path,
+    notice: "Movement was successfully deleted.",
+    status: :see_other
+rescue ActiveRecord::RecordNotDestroyed, ActiveRecord::DeleteRestrictionError, ActiveRecord::InvalidForeignKey
+  redirect_to movement_path(@movement),
+    alert: "This movement cannot be deleted because it is used by existing workout entries.",
+    status: :see_other
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

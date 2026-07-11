@@ -39,10 +39,23 @@ class MovementsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy movement" do
+    movement = Movement.create!(
+      name: "Disposable Movement",
+      tag: "DisposableMovement"
+    )
+
     assert_difference("Movement.count", -1) do
-      delete movement_url(@movement)
+      delete movement_url(movement)
     end
 
     assert_redirected_to movements_url
   end
+
+  test "should not destroy movement used by exercise entries" do
+  assert_no_difference("Movement.count") do
+    delete movement_url(@movement)
+  end
+
+  assert_redirected_to movement_url(@movement)
+end
 end
