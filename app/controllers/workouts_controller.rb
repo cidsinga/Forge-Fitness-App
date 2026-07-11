@@ -2,9 +2,11 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
 
   # GET /workouts or /workouts.json
-  def index
-    @workouts = Workout.all
-  end
+def index
+  @workouts = Workout
+    .includes(exercise_entries: :movement)
+    .order(date: :desc, created_at: :desc)
+end
 
   # GET /workouts/1 or /workouts/1.json
   def show

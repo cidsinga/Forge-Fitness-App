@@ -35,7 +35,7 @@ accepts_nested_attributes_for :exercise_sets,
 
   private
 
-def blank_exercise_set?(attributes)
-  attributes["weight"].blank? && attributes["reps"].blank?
-end
+  def blank_exercise_set?(attributes)
+    attributes["weight"].blank? && attributes["reps"].blank?
+  end
 end

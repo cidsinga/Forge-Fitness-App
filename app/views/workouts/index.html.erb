@@ -1,10 +1,8 @@
 <% content_for :title, "Workouts" %>
-
 <section class="space-y-8">
   <div class="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/30">
     <div class="relative px-6 py-8 sm:px-8 sm:py-10">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.18),_transparent_35%)]"></div>
-
       <div class="relative flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div class="max-w-2xl">
           <p class="text-sm font-semibold uppercase tracking-[0.28em] text-amber-300/80">Training Log</p>
@@ -12,44 +10,44 @@
             Workouts
           </h1>
           <p class="mt-4 text-base leading-7 text-zinc-300">
-            Capture the raw evidence. The reps, the notes, the cues, the days you showed up.
+            Review the sessions you logged. The movements, the reps, and the days you showed up.
           </p>
         </div>
-
         <%= link_to new_workout_path, class: "inline-flex items-center justify-center rounded-2xl bg-amber-400 px-5 py-3 text-sm font-black text-zinc-950 shadow-lg shadow-amber-950/30 transition hover:-translate-y-0.5 hover:bg-amber-300" do %>
           Add workout
         <% end %>
       </div>
     </div>
   </div>
-
   <% if @workouts.any? %>
     <div class="grid gap-4">
-      <% @workouts.order(date: :desc, created_at: :desc).each do |workout| %>
-        <article class="group rounded-3xl border border-white/10 bg-zinc-900/70 p-5 shadow-xl shadow-black/20 transition hover:-translate-y-0.5 hover:border-amber-300/30 hover:bg-zinc-900">
+      <% @workouts.each do |workout| %>
+        <% workout_type_label = workout.workout_type.presence || "Workout" %>
+        <% workout_date_label = workout.date&.strftime("%b %-d, %Y") || "No date" %>
+        <%= link_to workout_path(workout),
+            class: "group block rounded-3xl border border-white/10 bg-zinc-900/70 p-5 shadow-xl shadow-black/20 transition hover:-translate-y-0.5 hover:border-amber-300/30 hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-amber-300/60 focus:ring-offset-2 focus:ring-offset-zinc-950",
+            aria: { label: "View #{workout_type_label} from #{workout_date_label}" } do %>
           <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
             <div class="min-w-0 flex-1">
               <div class="flex flex-wrap items-center gap-3">
                 <span class="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-amber-200">
-                  <%= workout.workout_type.presence || "Workout" %>
+                  <%= workout_type_label %>
                 </span>
-
                 <time class="text-sm font-medium text-zinc-400">
-                  <%= workout.date&.strftime("%b %-d, %Y") || "No date" %>
+                  <%= workout_date_label %>
                 </time>
               </div>
-
-              <div class="mt-4 rounded-2xl border border-white/5 bg-black/20 p-4">
-                <p class="line-clamp-4 whitespace-pre-wrap text-sm leading-6 text-zinc-300"><%= workout.raw_notes.presence || "No notes yet." %></p>
+              <div class="mt-4 rounded-2xl border border-white/5 bg-black/20 p-4 transition group-hover:border-amber-300/20 group-hover:bg-black/30">
+                <p class="text-sm leading-6 text-zinc-300 transition group-hover:text-zinc-100">
+                  <%= workout_movement_summary(workout) %>
+                </p>
               </div>
             </div>
-
-            <div class="flex shrink-0 items-center gap-2 sm:flex-col sm:items-stretch">
-              <%= link_to "View", workout, class: "rounded-xl border border-white/10 px-4 py-2 text-center text-sm font-bold text-zinc-200 transition hover:border-amber-300/40 hover:bg-amber-300/10 hover:text-amber-100" %>
-              <%= link_to "Edit", edit_workout_path(workout), class: "rounded-xl border border-white/10 px-4 py-2 text-center text-sm font-bold text-zinc-400 transition hover:bg-white/10 hover:text-white" %>
+            <div class="hidden shrink-0 text-sm font-bold text-amber-200/70 transition group-hover:translate-x-1 group-hover:text-amber-200 sm:block">
+              View →
             </div>
           </div>
-        </article>
+        <% end %>
       <% end %>
     </div>
   <% else %>
@@ -59,7 +57,7 @@
       </div>
       <h2 class="mt-5 text-2xl font-black text-white">Start the forge.</h2>
       <p class="mx-auto mt-3 max-w-md text-sm leading-6 text-zinc-400">
-        Add your first workout. Keep it messy. Raw notes are enough for version one.
+        Add your first workout. Keep it simple. Log the movements and build the evidence.
       </p>
       <div class="mt-6">
         <%= link_to "Add first workout", new_workout_path, class: "inline-flex rounded-2xl bg-amber-400 px-5 py-3 text-sm font-black text-zinc-950 transition hover:bg-amber-300" %>
